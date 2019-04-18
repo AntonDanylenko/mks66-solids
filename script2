@@ -9,8 +9,10 @@ box
 0 0 0 150 100 400
 display
 push
+move
+50 -100 0
 box
-0 0 0 20 -300 20
+0 0 0 20 300 20
 display
 save
 giraffe.png
