@@ -1,6 +1,7 @@
 from display import *
 from matrix import *
 from gmath import *
+import random
 
 def swap(a1, a2):
     temp = a1
