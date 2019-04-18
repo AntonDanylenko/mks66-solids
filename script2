@@ -8,6 +8,7 @@ x 20
 box
 0 0 0 200 100 400
 display
+pop
 push
 move
 90 0 50
