@@ -10,43 +10,8 @@ box
 display
 push
 move
-150 200 0
-rotate
-y 20
-rotate
-x 20
+90 0 50
 box
-0 0 0 200 100 400
-display
-push
-move
-150 200 0
-rotate
-y 20
-rotate
-x 20
-box
-0 0 0 200 100 400
-display
-push
-move
-150 200 0
-rotate
-y 20
-rotate
-x 20
-box
-0 0 0 200 100 400
-display
-push
-move
-150 200 0
-rotate
-y 20
-rotate
-x 20
-box
-0 0 0 200 100 400
-display
+0 0 0 20 300 20
 save
 giraffe.png
