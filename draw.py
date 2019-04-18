@@ -29,7 +29,7 @@ def scanline_convert(polygons, i, screen, zbuffer ):
         upper=temp
 
     x0=(upper[0]-lower[0])/(upper[1]-lower[1])
-    z0=(upper[2]-lower[2])/(upper[1]-lower[1])
+    z0=(lower[2]-upper[2])/(upper[1]-lower[1])
 
     y=int(lower[1])
     xp=lower[0]
