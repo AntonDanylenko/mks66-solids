@@ -2,8 +2,58 @@ from display import *
 from matrix import *
 from gmath import *
 
+def swap(a1, a2):
+    temp = a1
+    a1 = a2
+    a2 = temp
+
 def scanline_convert(polygons, i, screen, zbuffer ):
-    pass
+    color=[random.randint(0,256),random.randint(0,256),random.randint(0,256)]
+
+    lower=polygons[i]
+    middle=polygons[i+1]
+    upper=polygons[i+2]
+
+    if middle[1]<lower[1]:
+        swap(lower, middle)
+    if upper[1]<lower[1]:
+        swap(lower, upper)
+    if upper[1]<middle[1]:
+        swap(middle, upper)
+
+    x0=(upper[0]-lower[0])/(upper[1]-lower[1])
+
+    z0=(upper[2]-lower[2])/(upper[1]-lower[1])
+
+    y=lower[1]
+    xp=lower[0]
+    zp=lower[2]
+    xq=lower[0]
+    zq=lower[2]
+
+    while y < middle[1]:
+        y+=1
+        draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
+        leftstep=(middle[0]-lower[0])/(middle[1]-lower[1])
+        zstep=(middle[2]-lower[2])/(middle[1]-lower[1])
+        xp+=x0
+        zp+=z0
+        xq+=leftstep
+        zq+=zstep
+
+    y=middle[1]
+    xq=middle[0]
+    zq=middle[2]
+
+    while y < upper[1]:
+        y+=1
+        draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
+        rightstep=(upper[0]-middle[0])/(upper[1]-middle[1])
+        zstep=(upper[2]-middle[2])/(upper[1]-middle[1])
+        xp+=x0
+        zp+=z0
+        xq+=rightstep
+        zq+=zstep
 
 def add_polygon( polygons, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point(polygons, x0, y0, z0)
