@@ -19,13 +19,13 @@ def scanline_convert(polygons, i, screen, zbuffer ):
         temp=lower
         lower=middle
         middle=temp
-    if upper[1]<middle[1]:
-        temp=middle
-        middle=upper
-        upper=temp
     if upper[1]<lower[1]:
         temp=lower
         lower=upper
+        upper=temp
+    if upper[1]<middle[1]:
+        temp=middle
+        middle=upper
         upper=temp
 
     x0=(upper[0]-lower[0])/(upper[1]-lower[1])
