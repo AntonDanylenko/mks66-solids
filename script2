@@ -10,7 +10,7 @@ box
 display
 push
 move
-90 0 -50
+90 0 50
 box
 0 0 0 20 -300 20
 display
