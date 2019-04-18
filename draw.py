@@ -16,25 +16,28 @@ def scanline_convert(polygons, i, screen, zbuffer ):
     upper=polygons[i+2]
 
     if middle[1]<lower[1]:
-        print(lower, middle)
-        swap(lower, middle)
-        print(lower, middle)
-        
+        temp=lower
+        lower=middle
+        middle=temp
     if upper[1]<lower[1]:
-        swap(lower, upper)
+        temp=lower
+        lower=upper
+        upper=temp
     if upper[1]<middle[1]:
-        swap(middle, upper)
+        temp=middle
+        middle=upper
+        upper=temp
 
     x0=(upper[0]-lower[0])/(upper[1]-lower[1])
     z0=(upper[2]-lower[2])/(upper[1]-lower[1])
 
-    y=lower[1]
+    y=int(lower[1])
     xp=lower[0]
     zp=lower[2]
     xq=lower[0]
     zq=lower[2]
 
-    while y < middle[1]:
+    while y < int(middle[1]):
         y+=1
         draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
         leftstep=(middle[0]-lower[0])/(middle[1]-lower[1])
@@ -44,11 +47,11 @@ def scanline_convert(polygons, i, screen, zbuffer ):
         xq+=leftstep
         zq+=zstep
 
-    y=middle[1]
+    y=int(middle[1])
     xq=middle[0]
     zq=middle[2]
 
-    while y < upper[1]:
+    while y < int(upper[1]):
         y+=1
         draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
         rightstep=(upper[0]-middle[0])/(upper[1]-middle[1])
