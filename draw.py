@@ -41,7 +41,7 @@ def scanline_convert(polygons, i, screen, zbuffer ):
         y+=1
         draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
         leftstep=(middle[0]-lower[0])/(middle[1]-lower[1])
-        zstep=(middle[2]-lower[2])/(middle[1]-lower[1])
+        zstep=(lower[2]-middle[2])/(middle[1]-lower[1])
         xp+=x0
         zp+=z0
         xq+=leftstep
@@ -55,7 +55,7 @@ def scanline_convert(polygons, i, screen, zbuffer ):
         y+=1
         draw_line(int(xp),int(y),int(zp),int(xq),int(y),int(zq),screen,zbuffer,color)
         rightstep=(upper[0]-middle[0])/(upper[1]-middle[1])
-        zstep=(upper[2]-middle[2])/(upper[1]-middle[1])
+        zstep=(middle[2]-upper[2])/(upper[1]-middle[1])
         xp+=x0
         zp+=z0
         xq+=rightstep
