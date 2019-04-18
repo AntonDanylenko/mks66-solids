@@ -357,6 +357,6 @@ def draw_line( x0, y0, z0, x1, y1, z1, screen, zbuffer, color ):
             x+= dx_east
             y+= dy_east
             d+= d_east
-        z+=(z1-z0)/(lop_end-old_loop)
+        z+=(z1-z0)/(loop_end-old_loop)
         loop_start+= 1
     plot( screen, zbuffer, color, x, y, z1 )
